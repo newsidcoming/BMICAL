@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BMI Cal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body {
+        background-color: rgb(30, 34, 25);
+        font-family: verdana;
+        font-size: 100%;
+        border: 1px solid powderblue;
+      }
+      h2 {
+        color: beige;
+        font-family: courier;
+        font-size: 100%;
+      }
+      p  {
+        color: indianred;
+        font-family: courier;
+        font-size: 100%;
+      }
+    </style>
+</head>
+<body>
+
+    <form action ="/" method = "post">
+      <h2>BMI Calculator</h2>
+      <div class="bmi-contents">
+            <div class = "bmi-content" id = "bmi-si">
+              <form>
+                <div class = "form-group">
+                  <p>Gender</p>
+                  <div>
+                    <input type = "radio" name = "gender" id = "male" value = "male" checked>
+                    <label for = "male" style="color : pink">Male</label>
+                  </div>
+  
+                  <div>
+                    <input type = "radio" name = "gender" id = "female" value = "female">
+                    <label for = "female" style="color : pink">Female</label>
+                  </div>
+                </div>
+  
+                <div class = "inputs">
+                  <p>Height</p>
+                  <div><input type = "text" name = "Height"  id = "cm" placeholder="cm">
+                  </div>      
+                  <p>Weight</p>
+                  <div><input type = "text" name = "Weight"  id = "kg" placeholder="kg">
+                  </div>                  
+                </div>
+              </form>  
+          <div class = "calculate">
+            <button class = "calculate">Calculate</button>
+          </div>
+  
+          
+  
+      <script src = "app.js"></script>
+    </body>
+  </html>
