@@ -1,64 +1,137 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>BMI Cal</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-      body {
-        background-color: rgb(30, 34, 25);
-        font-family: verdana;
-        font-size: 100%;
-        border: 1px solid powderblue;
-      }
-      h2 {
-        color: beige;
-        font-family: courier;
-        font-size: 100%;
-      }
-      p  {
-        color: indianred;
-        font-family: courier;
-        font-size: 100%;
-      }
-    </style>
-</head>
-<body>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>BMI Calculator</title>
+	</head>
+	<style media = "screen">
+		body{
+			margin: 0;
+			padding: 0;
+			text-align: center;
+			font-family: sans-serif;
+			background-image: linear-gradient(120deg,#ff6b6b, #5f27cd);
+			min-height: 100vh;
+		}
+		div{
+			width: 500px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			background-color: #fff;
+			transform: translate(-50%, -50%);
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 1px 1px 20px #ee5253;
+		}
+		h2{
+			font-size: 30px;
+			font-weight: 600;
+		}
+		.text{
+			text-align: left;
+			margin-left: 150px;
+		}
 
-    <form action ="/" method = "post">
-      <h2>BMI Calculator</h2>
-      <div class="bmi-contents">
-            <div class = "bmi-content" id = "bmi-si">
-              <form>
-                <div class = "form-group">
-                  <p>Gender</p>
-                  <div>
-                    <input type = "radio" name = "gender" id = "male" value = "male" checked>
-                    <label for = "male" style="color : pink">Male</label>
-                  </div>
-  
-                  <div>
-                    <input type = "radio" name = "gender" id = "female" value = "female">
-                    <label for = "female" style="color : pink">Female</label>
-                  </div>
-                </div>
-  
-                <div class = "inputs">
-                  <p>Height</p>
-                  <div><input type = "text" name = "Height"  id = "cm" placeholder="cm">
-                  </div>      
-                  <p>Weight</p>
-                  <div><input type = "text" name = "Weight"  id = "kg" placeholder="kg">
-                  </div>                  
-                </div>
-              </form>  
-          <div class = "calculate">
-            <button class = "calculate">Calculate</button>
-          </div>
-  
-          
-  
-      <script src = "app.js"></script>
-    </body>
-  </html>
+    .gender{
+      text-align: left;
+			margin-left: 150px;
+    }
+   
+    #male, #female{
+			color: #222f3e;
+			text-align: right;
+			font-size: 10px;
+			font-weight: 100;
+			border-bottom: 2px solid #341f97;
+			width: 100px;
+		}
+
+		#w, #h{
+			color: #222f3e;
+			text-align: left;
+			font-size: 20px;
+			font-weight: 200;
+			outline: none;
+			border: none;
+			background: none;
+			border-bottom: 1px solid #341f97;
+			width: 200px;
+		}
+			#w:focus, #h:focus{
+				border-bottom: 2px solid #341f97;
+				width: 300px;
+				transition: 0.5s;
+			}
+			#result{
+				color: #341f97;
+			}
+			#btn{
+				font-family: inherit;
+				margin-top: 10px;
+				border: none;
+				color: #fff;
+				background-image: linear-gradient(120deg,#ff6b6b, #5f27cd);
+				width: 150px;
+				padding: 10px;
+				border-radius: 30px;
+				outline: none;
+				cursor: pointer;
+			}
+			#btn:hover{
+				box-shadow: 1px 1px 10px #341f97;
+			}
+			#info{
+				font-size: 12px;
+				font-family: inherit;
+			}
+</style>
+	<script type="text/javascript">
+		function BMI() {
+			var h=document.getElementById('h').value;
+			var w=document.getElementById('w').value;
+			var bmi=w/(h/100*h/100);
+			var bmio=(bmi.toFixed(2));
+      let bmiCategory;
+      let healthRisk;
+      if(bmi < 18.4){
+        bmiCategory = "Underweight";
+        healthRisk = "Malnutrition Risk";
+    } else if(bmi >= 18.5 && bmi <= 24.9){
+        bmiCategory = "Normal Weight";
+        healthRisk = "Low Risk";
+    } else if(bmi >= 25 && bmi <= 29.9){
+        bmiCategory = "Overweight";
+        healthRisk = "Enhanced Risk";
+    } else if(bmi >= 30 && bmi <= 34.9){
+        bmiCategory = "Moderately Obese";
+        healthRisk = "Medium Risk";
+    } else if(bmi >= 35 && bmi <= 39.9){
+        bmiCategory = "Severely Obese";
+        healthRisk = "High Risk";
+    } else {
+        bmiCategory = "Very Severely Obese";
+        healthRisk = "Very High Risk";
+    }
+
+			document.getElementById("result").innerHTML="your bmi is " + bmio + " kg/m^2" + "\n Category : " + bmiCategory + "\n Health Risk : " + healthRisk;
+		}
+	</script>
+	<body>
+		<div>
+			<h2>BMI Calculator</h2>
+     		<p class = "gender">Gender</p>
+                  <input type = "radio" name = "gender" id = "male" value = "male" checked>
+                  <label for = "male">Male</label>           
+                  <input type = "radio" name = "gender" id = "female" value = "female" checked>
+                  <label for = "female">Female</label>
+			<p class="text">Height</p>
+			<input type="text" id="h">
+			<p class="text">Weight</p>
+			<input type="text" id="w">
+			<p id="result"></p>
+			<button id="btn" onClick="BMI()">Calculate</button>
+			<p id="info">Please enter height [cm] and weight [kg]</p>
+		</div>
+	</body>
+</html>
